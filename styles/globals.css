@@ -1,0 +1,52 @@
+h1{
+    text-align: center;
+    border: 5px solid gray;
+    padding: 5px 0px 3px 20px; 
+}
+h2{
+    border-bottom: 3px solid gray;
+    border-left: 5px solid gray;
+    padding: 5px 0px 3px 10px; 
+}
+h3{
+    border-bottom: 1px solid gray;
+    padding: 5px 0px 3px 5px; 
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0px 0px 0px 0px;
+
+}
+table th{
+    padding: 10px;
+}
+table.record{
+    float: left;
+    border-collapse: collapse;
+    margin: 0px 10px 10px 0px;
+}
+table.record td{
+    border: 1px solid gray;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;    
+}
+
+table.record td.winMaru{ 
+    background-color: khaki;
+}
+table.record td.winBatu{ 
+    background-color: paleturquoise;
+}
+
+br {
+    clear: both;
+}
+
+span .underline {
+    text-decoration: underline;
+}
