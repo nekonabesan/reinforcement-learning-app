@@ -1,4 +1,3 @@
-
 import React, { JSX } from 'react';
 import { APIRequestContext } from '@playwright/test'
 import ReactDOMServer from 'react-dom/server';

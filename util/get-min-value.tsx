@@ -2,7 +2,7 @@ import Rotarion from './rotation'
 import Mirror from './mirror'
 import getStateValue from './get-state-value'
 
-interface MinValue { 
+export interface MinValue { 
     value: number,
     rotationSymmetry: number,
     mirrorSymmetry: number

@@ -15,6 +15,11 @@ export default function Home() {
                         chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙
                     </a>
                 </p>
+                <p>
+                    <a href="/chapter-2/end-with-a-winner">
+                        chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙（勝敗決定で終了）
+                    </a>
+                </p>
             </div>
         </>
     );
