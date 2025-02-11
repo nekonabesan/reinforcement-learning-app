@@ -51,7 +51,6 @@ export default function Chapter2({ request }: { request: APIRequestContext }): J
     values[0] = [0]
 
     var teTable: JSX.Element = createTable(records[0][0],"table_move" + 0 , "move0_", "0".padStart(9, '0'), true, true)
-    //document.querySelector("#te" + 0 ).innerHTML = 1 + "パターン";
 
     const element: JSX.Element = (
         <>

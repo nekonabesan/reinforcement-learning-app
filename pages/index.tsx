@@ -20,6 +20,11 @@ export default function Home() {
                         chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙（勝敗決定で終了）
                     </a>
                 </p>
+                <p>
+                <a href="/chapter-3">
+                chapter&nbsp;3&nbsp;&nbsp;三目並べの学習状況のチェック
+                </a>
+                </p>
             </div>
         </>
     );

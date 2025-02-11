@@ -4,12 +4,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 カットシステムより刊行されている書籍「[倒立振子の作り方ゼロから学ぶ強化学習: 物理シミュレーション×機械学習](https://www.cutt.co.jp/book/978-4-87783-440-1.html)」の前半部分、三目並べの箇所をモダンなアーキテクチャで書き直しました。
 ## 参考文献
 ### フロントエンド開発/テスト
-[フロントエンド開発のためのテスト入門 今からでも知っておきたい自動テスト戦略の必須知識](https://www.shoeisha.co.jp/book/detail/9784798178639)
-[作って学ぶ Next.js/React Webサイト構築 (Compass Web Development)](https://book.mynavi.jp/ec/products/detail/id=130848)
-[\［入門\］Webフロントエンド E2E テスト――PlaywrightによるWebアプリの自動テストから良いテストの書き方まで (エンジニア選書)](https://gihyo.jp/book/2024/978-4-297-14220-9)
+[フロントエンド開発のためのテスト入門 今からでも知っておきたい自動テスト戦略の必須知識](https://www.shoeisha.co.jp/book/detail/9784798178639)<br />
+[作って学ぶ Next.js/React Webサイト構築 (Compass Web Development)](https://book.mynavi.jp/ec/products/detail/id=130848)<br />
+[\［入門\］Webフロントエンド E2E テスト――PlaywrightによるWebアプリの自動テストから良いテストの書き方まで (エンジニア選書)](https://gihyo.jp/book/2024/978-4-297-14220-9)<br />
 ### 機械学習関連
-[人工知能概論 第2版 ―コンピュータ知能からWeb知能まで](https://www.kyoritsu-pub.co.jp/book/b10010346.html)
-[人工知能原理（改訂版）](https://www.coronasha.co.jp/np/isbn/9784339027235/)
+[人工知能概論 第2版 ―コンピュータ知能からWeb知能まで](https://www.kyoritsu-pub.co.jp/book/b10010346.html)<br />
+[人工知能原理（改訂版）](https://www.coronasha.co.jp/np/isbn/9784339027235/)<br />
 
 ## Getting Started
 First, run the development server:
