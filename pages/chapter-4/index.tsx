@@ -69,7 +69,7 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
                         <tr><td colSpan={2}>コンピュータの強さ（貪欲性）</td></tr>
                         <tr>
                             <td>
-                                <input type="range" min="0" max="1.0" step="0.01" value="1" id="epsilonRange" />
+                                <input type="range" min="0" max="1.0" step="0.01" id="epsilonRange" />
                                 <span id="epsilon">1.0</span>
                             </td>
                         </tr>
@@ -146,14 +146,15 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
             }
         }
         //貪欲性の設定
-        var epsilonRange = document.getElementById("epsilonRange")
-        epsilonRange?.addEventListener("input", function(){
-            environment.sente.epsilon = parseInt((this as HTMLInputElement).value)
-            environment.gote.epsilon = parseInt((this as HTMLInputElement).value)
-            var epsilonElement = document.getElementById("epsilon")
-            if (epsilonElement) {
-                epsilonElement.innerHTML = (this as HTMLInputElement).value
-            }
+        var epsilonRange = document.getElementById("epsilonRange") as HTMLInputElement
+        if (epsilonRange) {
+            epsilonRange.value = "1.0"
+        }
+        epsilonRange.addEventListener("input", function(){
+            environment.sente.epsilon = parseInt(epsilonRange.value)
+            environment.gote.epsilon = parseInt(epsilonRange.value)
+            let epsilon = document.getElementById("epsilon")!
+            epsilon.innerHTML = epsilonRange.value
         })
         //学習開始
         startLearning(progress, pp, environment)
