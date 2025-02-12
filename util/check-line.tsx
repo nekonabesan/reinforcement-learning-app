@@ -1,4 +1,9 @@
-export default function( data: Array<Array<number>> ): Array<Array<number>>
+/**
+ * 
+ * 
+ * @param data
+ */
+export default function(data: Array<Array<number>>, resultValue_01: number = 1, resultValue_02: number = -1): Array<Array<number>>
 {
     
     var results: Array<Array<number>> = [];
@@ -13,10 +18,10 @@ export default function( data: Array<Array<number>> ): Array<Array<number>>
     data.forEach((line, i) => {
         data.forEach((line, i) => {
             if (data[i][0] * data[i][1] * data[i][2] == 1) {
-                for( let j = 0; j < data[0].length; j++ ) results[i][j] = 1
+                for( let j = 0; j < data[0].length; j++ ) results[i][j] = resultValue_01
             }
             if (data[i][0] * data[i][1] * data[i][2] == 8){
-                for( let j = 0; j < data[0].length; j++ ) results[i][j] = -1
+                for( let j = 0; j < data[0].length; j++ ) results[i][j] = resultValue_02
             }
         })
     })
@@ -24,27 +29,27 @@ export default function( data: Array<Array<number>> ): Array<Array<number>>
     data.forEach((line, i) => {
         data.forEach((value, j) => {
             if (data[0][j] * data[1][j] * data[2][j] == 1) {
-                for( let i = 0; i < data.length; i++ ) results[i][j] = 1
+                for( let i = 0; i < data.length; i++ ) results[i][j] = resultValue_01
             }
             if ( data[0][j] * data[1][j] * data[2][j] == 8) {
-                for( let i = 0; i < data.length; i++ ) results[i][j] = -1
+                for( let i = 0; i < data.length; i++ ) results[i][j] = resultValue_02
             }
         })
     })
 
     //右上斜め
     if (data[0][0] * data[1][1] * data[2][2] == 1) {
-        for( let i = 0; i<data.length; i++ ) results[i][i] = 1;
+        for( let i = 0; i<data.length; i++ ) results[i][i] = resultValue_01;
     }
     if (data[0][0] * data[1][1] * data[2][2] == 8) {
-        for( let i = 0; i<data.length; i++ ) results[i][i] = -1;
+        for( let i = 0; i<data.length; i++ ) results[i][i] = resultValue_02;
     }
     //右下斜め
     if (data[2][0] * data[1][1] * data[0][2] == 1) {
-        for( let i = 0; i<data.length; i++ ) results[data.length-1-i][i] = 1;
+        for( let i = 0; i<data.length; i++ ) results[data.length-1-i][i] = resultValue_01;
     }
     if (data[2][0] * data[1][1] * data[0][2] == 8) {
-        for( let i = 0; i<data.length; i++ ) results[data.length-1-i][i] = -1;
+        for( let i = 0; i<data.length; i++ ) results[data.length-1-i][i] = resultValue_02;
     }
 
     return results;

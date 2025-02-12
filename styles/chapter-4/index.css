@@ -1,0 +1,42 @@
+div#game {
+    float: left;
+}
+
+div#game table {
+}
+
+div#game table td{
+    padding: 0px;
+    width:100px;
+    height: 100px;
+    border: 2px solid gray;
+    line-height: 100px;
+    font-size: 90px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+}
+
+button#nextGameButton{
+    width: 300px;
+    height: 100px;
+    margin: 20px 0px 0px 0px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+div#controller, div#comment{
+    width: 300px;
+    float: left;
+    padding: 0px 0px 0px 30px;
+}
+
+div#controller p {
+    font-size: large;
+    font-weight: bold;
+}
+
+div#comment p {
+    font-size: xx-large;
+    font-weight: bold;
+}

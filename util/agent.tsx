@@ -118,8 +118,8 @@ export default class Agent
                     //元に戻す
                     record[ i ][ j ] = 0;
                     //手番号
-                    let te_num = this.environment.values[t].indexOf( min_v );
-                    if( te_num == -1 ) console.log("エラー0", t, min_v);
+                    let te_num = this.environment.values[t].indexOf(min_v);
+                    if(te_num == -1) console.log("エラー0", t, min_v);
                     //行動評価関数の値を取得する
                     let Q = this.Qfunction[ t ][ te_num ];
                     //ボルツマン因子の計算に利用するパラメータを格納

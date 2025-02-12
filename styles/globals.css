@@ -50,3 +50,15 @@ br {
 span .underline {
     text-decoration: underline;
 }
+
+span .red {
+    color: red;
+}
+
+span .blue {
+    color: blue;
+}
+
+td .colspan2 {
+    colspan: 2;
+}

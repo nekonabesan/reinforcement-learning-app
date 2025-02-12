@@ -21,9 +21,14 @@ export default function Home() {
                     </a>
                 </p>
                 <p>
-                <a href="/chapter-3">
-                chapter&nbsp;3&nbsp;&nbsp;三目並べの学習状況のチェック
-                </a>
+                    <a href="/chapter-3">
+                        chapter&nbsp;3&nbsp;&nbsp;三目並べの学習状況のチェック
+                    </a>
+                </p>
+                <p>
+                    <a href="/chapter-4">
+                    chapter&nbsp;4&nbsp;&nbsp;三目並べゲーム
+                    </a>
                 </p>
             </div>
         </>
