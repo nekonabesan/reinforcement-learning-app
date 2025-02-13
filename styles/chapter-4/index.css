@@ -3,6 +3,7 @@ div#game {
 }
 
 div#game table {
+    color: black;
 }
 
 div#game table td{

@@ -6,8 +6,8 @@
  */
 export default function ( source: Array<Array<number>>): Array<Array<number>> 
 {
-    var results: Array<Array<number>> = [];
-    for(let i = 0; i < source.length; i++){
+    var results: Array<Array<number>> = []
+    for(let i: number = 0; i < source.length; i++){
         results[i] = [];
     }
 

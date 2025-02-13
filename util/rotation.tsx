@@ -14,8 +14,8 @@ export default function (
     }
     // 回転無し
     if (r == 0) {
-        for (let i = 0; i <= Nm; i++) {
-            for (let j = 0; j <= Nm; j++) {
+        for (let i: number = 0; i <= Nm; i++) {
+            for (let j: number = 0; j <= Nm; j++) {
                 results[i][j] = source[i][j]
             }
         }

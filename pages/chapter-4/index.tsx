@@ -123,21 +123,21 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
         // 次ゲームの設定
         nextGame()
         // マスの設定
-        for(let i: number = 0; i < 3; i++){
-            for(let j: number = 0; j < 3; j++){
+        for(let i: number = 0; i < 3; i++) {
+            for(let j: number = 0; j < 3; j++) {
                 let waku = document.getElementById("g" + i + j) as CustomHTMLElement
                 if (waku) {
                     waku.selectFlag = false
-                    waku.yoko = i;
-                    waku.tate = j;
+                    waku.yoko = i
+                    waku.tate = j
                     waku.addEventListener("mouseover", function(){
                         if(!waku.selectFlag && !finishFlag) {
-                            if(te_num % 2 == 0) this.style.backgroundColor = senteColor;
-                            if(te_num % 2 == 1) this.style.backgroundColor = goteColor;
+                            if(te_num % 2 == 0) this.style.backgroundColor = senteColor
+                            if(te_num % 2 == 1) this.style.backgroundColor = goteColor
                         }
                     });
                     waku.addEventListener("mouseout", function(){
-                        if(!finishFlag) this.style.backgroundColor = "white";
+                        if(!finishFlag) this.style.backgroundColor = "white"
                     });
                     waku.addEventListener("click", function () {
                         clickEvent(waku)
@@ -175,12 +175,12 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
  * @param pp HTMLElement | null
  * @param environment Environment
  */
-async function startLearning(progress: HTMLProgressElement | null, pp: HTMLElement | null, environment: Environment)
+async function startLearning(progress: HTMLProgressElement | null, pp: HTMLElement | null, environment: Environment): Promise<void>
 {
     // 学習回数
-    let N = 10000;
+    let N: number = 10000
     // 学習
-    for(let n = 1; n <= 100; n++){
+    for(let n: number = 1; n <= 100; n++) {
         if (progress) {
             progress.value = await (function(){
                 return new Promise(resolve=>{
@@ -195,25 +195,25 @@ async function startLearning(progress: HTMLProgressElement | null, pp: HTMLEleme
                 })
             })()
         }
-        //先手エージェントのパラメータ
-        environment.sente.selectMethod = 2;
-        environment.sente.beta = n/20;
-        environment.sente.losePenalty = -5;
-        environment.sente.gamma = 0.7;
-        //後手エージェントのパラメータ
-        environment.gote.selectMethod = 2;
-        environment.gote.beta = n/20;
-        environment.gote.losePenalty = -5;
-        environment.gote.gamma = 0.7;
-        environment.learn(N/100, '');
+        //先手エージェントのパラメータ設定
+        environment.sente.selectMethod = 2
+        environment.sente.beta = n/20
+        environment.sente.losePenalty = -5
+        environment.sente.gamma = 0.7
+        //後手エージェントのパラメータ設定
+        environment.gote.selectMethod = 2
+        environment.gote.beta = n/20
+        environment.gote.losePenalty = -5
+        environment.gote.gamma = 0.7
+        environment.learn(N/100, '')
     }
-    environment.sente.selectMethod = 1;
-    environment.gote.selectMethod = 1;
+    environment.sente.selectMethod = 1
+    environment.gote.selectMethod = 1
     // プログレスバーの非表示
-    var progressTable = document.getElementById("progressTable");
-    var epsilonTable = document.getElementById("epsilonTable");
-    if (progressTable) progressTable.style.display = "none";
-    if (epsilonTable) epsilonTable.style.display = "block";
+    let progressTable = document.getElementById("progressTable")
+    if (progressTable) progressTable.style.display = "none"
+    let epsilonTable = document.getElementById("epsilonTable")
+    if (epsilonTable) epsilonTable.style.display = "block"
 }
 
 /**
@@ -224,7 +224,7 @@ async function startLearning(progress: HTMLProgressElement | null, pp: HTMLEleme
 function computerMove(): void
 {
     // 手数をインクリメント
-    te_num++;
+    te_num++
     // 次の手を選択
     let nextMove: nextMoveElement = {i: 0, j: 0}
     if(te_num % 2 == 1) nextMove = environment.sente.selectNextMove(te_num, record)!
@@ -234,16 +234,16 @@ function computerMove(): void
     waku.selectFlag = true
     if (waku.yoko !== undefined && waku.tate !== undefined) {
         if( te_num % 2 == 1 )    {
-            waku.innerHTML = "○";
-            record[waku.yoko][waku.tate] = 1;
+            waku.innerHTML = "○"
+            record[waku.yoko][waku.tate] = 1
         }
         if( te_num % 2 == 0 )    {
-            waku.innerHTML = "×";
-            record[waku.yoko][waku.tate] = 2;
+            waku.innerHTML = "×"
+            record[waku.yoko][waku.tate] = 2
         }
     }
     // 結果の判定
-    checkResult();
+    checkResult()
 }
 
 /**
@@ -258,22 +258,22 @@ function clickEvent(waku: CustomHTMLElement): void
     let wakeNumElement: HTMLElement = document.getElementById("wake_num")!
     // クリックイベントの処理
     if(!waku.selectFlag && !finishFlag) {
-        te_num++;
+        te_num++
         if (waku.yoko !== undefined && waku.tate !== undefined) {
             if (te_num % 2 == 1 ) {
                 waku.innerHTML = "○";
-                record[waku.yoko][waku.tate] = 1;
+                record[waku.yoko][waku.tate] = 1
             }
             if ( te_num%2 == 0 )    {
                 waku.innerHTML = "×";
-                record[waku.yoko][waku.tate] = 2;
+                record[waku.yoko][waku.tate] = 2
             }
         }
         waku.selectFlag = true;
         // 結果の判定
-        checkResult();
+        checkResult()
         // コンピュータの手を選択
-        if(te_num % 2 == (game_num % 2) && te_num < 9 && !finishFlag) computerMove();
+        if(te_num % 2 == (game_num % 2) && te_num < 9 && !finishFlag) computerMove()
     }
     // 対戦結果の表示
     if(finishFlag == true) {
@@ -290,19 +290,19 @@ function clickEvent(waku: CustomHTMLElement): void
  */
 function insertResult(result: boolean | null): void
 {
-    let span: HTMLElement = document.createElement("span");
+    let span: HTMLElement = document.createElement("span")
     // 勝敗結果の表示
     if(result == true) {
-        span.innerHTML ="勝ち";
-        span.style.color = "red";
+        span.innerHTML ="勝ち"
+        span.style.color = "red"
     }else if(result == false){
-        span.innerHTML ="負け";
-        span.style.color = "blue";
+        span.innerHTML ="負け"
+        span.style.color = "blue"
     }else{
-        span.innerHTML ="引き分け";
+        span.innerHTML ="引き分け"
     }
     let rElement: HTMLElement = document.getElementById("r" + game_num)!
-    rElement.appendChild(span);
+    rElement.appendChild(span)
 }
 
 /**
@@ -310,8 +310,9 @@ function insertResult(result: boolean | null): void
  * 
  * @returns void
  */
-function nextGame(): void{
-    finishFlag = false;
+function nextGame(): void
+{
+    finishFlag = false
     te_num = 0
     // DOM要素の取得
     let sente: HTMLElement = document.getElementById("sente")!
@@ -323,22 +324,22 @@ function nextGame(): void{
     let commentLoseElement = document.getElementById("comment_lose")!
     let commentWakeElement = document.getElementById("comment_wake")!
     // ゲームの進行
-    game_num++;
+    game_num++
     if(game_num % 2 == 1){
-        sente.innerHTML = "あなた";
-        sente.style.color = "red";
-        gote.innerHTML = "コンピュータ";
-        gote.style.color = "blue";
+        sente.innerHTML = "あなた"
+        sente.style.color = "red"
+        gote.innerHTML = "コンピュータ"
+        gote.style.color = "blue"
     }else{
-        sente.innerHTML = "コンピュータ";
-        sente.style.color = "blue";
-        gote.innerHTML = "あなた";
-        gote.style.color = "red";
+        sente.innerHTML = "コンピュータ"
+        sente.style.color = "blue"
+        gote.innerHTML = "あなた"
+        gote.style.color = "red"
     }
     // レコードの初期化
-    let div: HTMLElement = document.createElement("div");
-    div.id = "r" + game_num;
-    div.style.clear = "both";
+    let div: HTMLElement = document.createElement("div")
+    div.id = "r" + game_num
+    div.style.clear = "both"
     recordSelector.insertBefore(div, recordSelector.firstChild)
     // ボタンの非表示
     nextGameButtonElement.style.display = "none"
@@ -346,9 +347,9 @@ function nextGame(): void{
     commentLoseElement.style.display = "none"
     commentWakeElement.style.display = "none"
     // レコードの初期化
-    for(let i = 0; i < 3; i++){
+    for(let i: number = 0; i < 3; i++) {
         record[i] = [];
-        for(let j = 0; j < 3; j++) {
+        for(let j: number = 0; j < 3; j++) {
             record[i][j] = 0
             let waku = document.getElementById("g" + i + j) as CustomHTMLElement
             waku.style.backgroundColor = "white"
@@ -357,7 +358,7 @@ function nextGame(): void{
         }
     }
 
-    if(game_num % 2 == 0) computerMove();
+    if(game_num % 2 == 0) computerMove()
 }
 
 /**
@@ -379,14 +380,14 @@ function checkResult(): void
         for(let j: number = 0; j < 3; j++){
             let waku: HTMLElement = document.getElementById("g" + i + j)!
             if(results[i][j] == 1) {
-                waku.style.backgroundColor = senteColor;
-                senteWinFlag = true;
-                finishFlag = true;
+                waku.style.backgroundColor = senteColor
+                senteWinFlag = true
+                finishFlag = true
             }
             if(results[i][j] == 2) {
-                waku.style.backgroundColor = goteColor;
-                goteWinFlag = true;
-                finishFlag = true;
+                waku.style.backgroundColor = goteColor
+                goteWinFlag = true
+                finishFlag = true
             }
         }
     }
@@ -399,20 +400,20 @@ function checkResult(): void
     if((senteWinFlag && game_num % 2 == 0) || (goteWinFlag && game_num % 2 == 1)) {
         lose_num++
         commentLoseElement.style.display = "block"
-        insertResult(false);
+        insertResult(false)
     }
     //譜面の追加
     let obj: HTMLElement = document.getElementById("r" + game_num)!
-    obj.innerHTML += ReactDOMServer.renderToString(createTable(record, '', "r" + game_num, '', true, true));
+    obj.innerHTML += ReactDOMServer.renderToString(createTable(record, '', "r" + game_num, '', true, true))
     // 引き分けの場合
     if( te_num == 9 || finishFlag) {
         finishFlag = true;
-        nextGameButtonElement.style.display = "block";
+        nextGameButtonElement.style.display = "block"
         // 引き分けの場合
         if(!senteWinFlag && !goteWinFlag) {
             wake_num++;
-            commnWakuElement.style.display = "block";
-            insertResult(null);
+            commnWakuElement.style.display = "block"
+            insertResult(null)
         }
     }
 }

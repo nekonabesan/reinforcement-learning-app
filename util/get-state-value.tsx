@@ -4,11 +4,11 @@
  */
 export default function (record: Array<Array<number>>, baseValue: Array<Array<number>>): number
 {
-    var v: number = 0;
-    for( let i = 0; i < record.length; i++ ){
-        for( let j = 0; j < record[ 0 ].length; j++ ){
-            v += record[i][j] * baseValue[i][j];
+    var v: number = 0
+    for(let i: number = 0; i < record.length; i++ ) {
+        for( let j: number = 0; j < record[ 0 ].length; j++) {
+            v += record[i][j] * baseValue[i][j]
         }
     }
-    return v;
+    return v
 }
