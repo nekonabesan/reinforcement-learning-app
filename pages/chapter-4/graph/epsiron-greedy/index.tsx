@@ -1,7 +1,7 @@
-import React, { JSX, useEffect, PureComponent } from 'react';
-import {CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis,YAxis, ResponsiveContainer} from 'recharts';
+import React, { JSX, useEffect } from 'react';
 import { APIRequestContext } from '@playwright/test'
 import Environment from '@/util/environment'
+import SimpleLineChart, { drowDatas } from '@/util/graph/simple-line-chart'
 import '@/styles/chapter-4/index.css'
 
 /**
@@ -12,13 +12,6 @@ import '@/styles/chapter-4/index.css'
  */
 export default function Chapter4({ request }: { request: APIRequestContext }): JSX.Element
 {
-    interface drowDatas {
-        '学習回数': number
-        '先手勝利': number
-        '後手勝利': number
-        '引き分け': number
-    }
-
     //学習回数
     let N: number = 10000
 
@@ -78,14 +71,14 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
     var data3: Array<Array<number>> = []
     // 
     for(let n: number = 0; n <= (N / 100); n++){
-        data1[n] = [N/100 * n , data1s[0][n] / M]
-        data2[n] = [N/100 * n , data2s[0][n] / M]
-        data3[n] = [N/100 * n , data3s[0][n] / M]
+        data1[n] = [N / 100 * n , data1s[0][n] / M]
+        data2[n] = [N / 100 * n , data2s[0][n] / M]
+        data3[n] = [N / 100 * n , data3s[0][n] / M]
         // 
         for(let m: number = 1; m < M; m++){
-            data1[n][1] += data1s[m][n]/M
-            data2[n][1] += data2s[m][n]/M
-            data3[n][1] += data3s[m][n]/M
+            data1[n][1] += (data1s[m][n] / M)
+            data2[n][1] += (data2s[m][n] / M)
+            data3[n][1] += (data3s[m][n] / M)
         }
     }
 
@@ -102,24 +95,7 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
         <>
             <h1>学習回数に対する勝敗数のグラフ</h1>
             <div id="canvas-frame_graph">
-                <LineChart 
-                        width={800}
-                        height={400}
-                        data={data}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
-                >
-                    <XAxis dataKey="学習回数"/>
-                    <YAxis/>
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                    <Line type="monotone" dataKey="先手勝利" stroke="#20b2aa" />
-                    <Line type="monotone" dataKey="後手勝利" stroke="#ffa500" />
-                    <Line type="monotone" dataKey="引き分け" stroke="#d2b48c" />
-                </LineChart>
+                <SimpleLineChart data={data} />
             </div>
             <h1>三目並べの学習状況のチェック</h1>
             <div id="record"></div>
