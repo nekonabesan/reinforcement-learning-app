@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
     return (
         <>
@@ -10,26 +8,42 @@ export default function Home() {
                 <p><a href="/chapter-1">chapter&nbsp;1</a></p>
             </div>
             <div>
-                <p>
-                    <a href="/chapter-2/enumeration-of-all-states">
-                        chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙
-                    </a>
-                </p>
-                <p>
-                    <a href="/chapter-2/end-with-a-winner">
-                        chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙（勝敗決定で終了）
-                    </a>
-                </p>
-                <p>
-                    <a href="/chapter-3">
-                        chapter&nbsp;3&nbsp;&nbsp;三目並べの学習状況のチェック
-                    </a>
-                </p>
-                <p>
-                    <a href="/chapter-4">
-                    chapter&nbsp;4&nbsp;&nbsp;三目並べゲーム
-                    </a>
-                </p>
+                <div>
+                    <p>
+                        <a href="/chapter-2/enumeration-of-all-states">
+                            chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <a href="/chapter-2/end-with-a-winner">
+                            chapter&nbsp;2&nbsp;&nbsp;三目並べの全状態の列挙（勝敗決定で終了）
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <a href="/chapter-3">
+                            chapter&nbsp;3&nbsp;&nbsp;三目並べの学習状況のチェック
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    <h3>Chapter&nbsp;4&nbsp;&nbsp;強化学習成果のパラメータ依存性</h3>
+                    <h4>三目並べ</h4>
+                    <p>
+                        <a href="/chapter-4">
+                            chapter&nbsp;4&nbsp;&nbsp;三目並べゲーム
+                        </a>
+                    </p>
+                    <h4>Epsiron-Greadyu法</h4>
+                    <p>
+                        <a href="/chapter-4/graph/epsiron-greedy">
+                            chapter&nbsp;4&nbsp;&nbsp;Epsiron-Greedy法を用いた学習
+                        </a>
+                    </p>
+                </div>
             </div>
         </>
     );
