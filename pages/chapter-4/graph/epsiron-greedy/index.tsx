@@ -1,4 +1,4 @@
-import React, { JSX, useEffect } from 'react';
+import React, { JSX, useState, useEffect } from 'react';
 import { APIRequestContext } from '@playwright/test'
 import Environment from '@/util/environment'
 import SimpleLineChart, { drowDatas } from '@/util/graph/simple-line-chart'
@@ -11,6 +11,37 @@ import '@/styles/chapter-4/index.css'
  * @param request APIRequestContext
  */
 export default function Chapter4({ request }: { request: APIRequestContext }): JSX.Element
+{
+    const [data, setData] = useState<Array<drowDatas>>([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const result = await getData();
+            setData(result);
+        }
+        fetchData();
+    }, []);
+
+    const element: JSX.Element = (
+        <>
+            <h1>学習回数に対する勝敗数のグラフ</h1>
+            <div id="canvas-frame_graph">
+                {data.length > 0 && <SimpleLineChart data={data} />}
+            </div>
+            <h1>三目並べの学習状況のチェック</h1>
+            <div id="record"></div>
+        </>
+    )
+
+    return element
+}
+
+/**
+ * 学習データを取得
+ * 
+ * @param void
+ */
+async function getData(): Promise<Array<drowDatas>>
 {
     //学習回数
     let N: number = 10000
@@ -90,20 +121,6 @@ export default function Chapter4({ request }: { request: APIRequestContext }): J
             '引き分け': data3[i][1],
         })
     }
-    
-    const element: JSX.Element = (
-        <>
-            <h1>学習回数に対する勝敗数のグラフ</h1>
-            <div id="canvas-frame_graph">
-                <SimpleLineChart data={data} />
-            </div>
-            <h1>三目並べの学習状況のチェック</h1>
-            <div id="record"></div>
-        </>
-    )
 
-    useEffect(() => {
-    }, [])
-
-    return element
+    return data
 }
