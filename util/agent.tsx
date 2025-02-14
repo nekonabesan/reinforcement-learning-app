@@ -17,24 +17,33 @@ export default class Agent
      * 
      * @param environment: Environment 環境
      */
-    constructor(environment: Environment){
+    constructor(
+        environment: Environment,
+        Qfunction: Array<Array<number>> = [[0]],
+        eta: number = 0.1,
+        gamma: number = 1.0,
+        losePenalty: number = -2,
+        selectMethod: number = 0,
+        epsilon: number = 0.5,
+        beta: number = 1.0
+    ) {
         //環境を保持
         this.environment = environment
         //行動評価関数
         this.Qfunction = [];
-        this.Qfunction[ 0 ] = [ 0 ]
+        this.Qfunction = Qfunction
         //学習率
-        this.eta = 0.1
+        this.eta = eta
         //割引率
-        this.gamma = 1.0
+        this.gamma = gamma
         //負け時のペナルティ
-        this.losePenalty = -2
+        this.losePenalty = losePenalty
         //行動選択の方法（0:ランダム、1:Epsilon-Greedy法、2:ボルツマン法）
-        this.selectMethod = 0
+        this.selectMethod = selectMethod
         //貪欲性（Epsilon-Greedy法）
-        this.epsilon = 0.5
+        this.epsilon = epsilon
         //ボルツマン因子の指数（ボルツマン法）
-        this.beta = 1.0
+        this.beta = beta
         //ボルツマン因子の初期化
         this._boltzmanFactors = []
     }

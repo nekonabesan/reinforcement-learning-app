@@ -1,4 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import NProgress from 'nprogress'
 
 export interface drowDatas {
     '学習回数': number
@@ -7,8 +8,9 @@ export interface drowDatas {
     '引き分け': number
 }
 
-export default function SimpleLineChart({ data }: { data: Array<drowDatas> }): React.ReactElement
+export default function SimpleLineChart({ data, progress }: { data: Array<drowDatas>, progress: NProgress.NProgress }): React.ReactElement
 {
+    progress.done()
     return (
         <>
             <LineChart 

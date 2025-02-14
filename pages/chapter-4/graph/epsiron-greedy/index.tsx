@@ -1,32 +1,41 @@
 import React, { JSX, useState, useEffect } from 'react';
-import { APIRequestContext } from '@playwright/test'
 import Environment from '@/util/environment'
+import NProgress from 'nprogress'
 import SimpleLineChart, { drowDatas } from '@/util/graph/simple-line-chart'
 import '@/styles/chapter-4/index.css'
+import 'nprogress/nprogress.css'
 
 /**
  * Epsiron-Greedy法を用いた学習
  * (参考) https://recharts.org/en-US/examples
  * 
- * @param request APIRequestContext
+ * @param request Request
  */
-export default function Chapter4({ request }: { request: APIRequestContext }): JSX.Element
+export default function Chapter4({ request }: { request: Request }): JSX.Element
 {
-    const [data, setData] = useState<Array<drowDatas>>([]);
+    const [data, setData] = useState<Array<drowDatas>>([])
+    const progress = NProgress.configure({}).start()
 
     useEffect(() => {
-        async function fetchData() {
-            const result = await getData();
-            setData(result);
+        async function fetchData(): Promise<void>
+        {
+            const result = await getData()
+            setData(result)
         }
-        fetchData();
+
+        fetchData().then(() => {
+        }).finally(() => {
+        })
+
+        return () => {
+        }
     }, []);
 
     const element: JSX.Element = (
         <>
             <h1>学習回数に対する勝敗数のグラフ</h1>
             <div id="canvas-frame_graph">
-                {data.length > 0 && <SimpleLineChart data={data} />}
+                {data.length > 0 && <SimpleLineChart data={data} progress={progress} />}
             </div>
             <h1>三目並べの学習状況のチェック</h1>
             <div id="record"></div>
